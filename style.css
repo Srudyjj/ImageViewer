@@ -1,0 +1,267 @@
+/* css reset */
+  html, body, div, span, applet, object, iframe,
+  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+  a, abbr, acronym, address, big, cite, code,
+  del, dfn, em, img, ins, kbd, q, s, samp,
+  small, strike, strong, sub, sup, tt, var,
+  b, u, i, center,
+  dl, dt, dd, ol, ul, li,
+  fieldset, form, label, legend,
+  table, caption, tbody, tfoot, thead, tr, th, td,
+  article, aside, canvas, details, embed, 
+  figure, figcaption, footer, header, hgroup, 
+  menu, nav, output, ruby, section, summary,
+  time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+  }
+  /* HTML5 display-role reset for older browsers */
+  article, aside, details, figcaption, figure, 
+  footer, header, hgroup, menu, nav, section {
+    display: block;
+  }
+  body {
+    line-height: 1;
+  }
+  ol, ul {
+    list-style: none;
+  }
+  blockquote, q {
+    quotes: none;
+  }
+  blockquote:before, blockquote:after,
+  q:before, q:after {
+    content: '';
+    content: none;
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+*{
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1440px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+}
+
+header {
+  display: block;
+  height: 50px;
+  background: black;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fovorites {
+  display: block;
+  cursor: pointer;
+  margin-right: 30px;
+  height: 25px;
+  width: 25px;
+  text-decoration: none;
+  cursor: pointer;
+  background-image: url(./icons/star.svg);
+  background-size: 25px 25px;
+}
+
+
+.logo {
+  display: block;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 50px;
+  cursor: pointer;
+  margin-left: 30px;
+  text-decoration: none;  
+}
+
+.catalog {
+  padding: 15px;
+  padding-bottom: 0;
+  width: 100%;
+  min-height: calc(100vh - 50px);
+}
+
+.catalog_images {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-bottom: 50px;
+  margin-bottom: -50px;
+  height: 100%;
+}
+
+.catalog .img_wrapper {
+  display: block;
+  margin: 15px;
+  width: 231px;
+  height: 231px;
+  cursor: pointer;
+  position: relative; 
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.catalog .img_wrapper .star {
+  position: absolute;
+  display: block;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  background-image: url(./icons/star.svg);
+  background-size: 20px 20px;
+  top: 10px;
+  right: 10px;
+  opacity: 0.5;
+  z-index: 1; 
+}
+
+.catalog .img_wrapper .star:hover {
+  opacity: 1; 
+}
+
+.catalog .img_wrapper-favorite .star {
+  opacity: 1; 
+}
+
+.catalog .img_wrapper img {
+  display: block;
+  width: 231px;
+  height: 231px;
+  transition: all 0.5s;
+}
+
+.catalog .img_wrapper:hover  {
+  transform: scale(1.05);
+}
+
+.catalog .img_wrapper img:hover {
+  transform: scale(1.15);
+}
+
+.pagination {
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  flex: none;
+  display: block;
+  width: 100%
+}
+
+.pagination_backward, .pagination_num, .pagination_forward {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.filter {
+  display: block;
+  min-width: 330px;
+  padding: 30px;
+  padding-top: 0;
+}
+
+.filter_title {
+  text-transform: uppercase;
+  height: 50px;
+  line-height: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #808080;
+  margin-top: 15px;
+}
+
+.filter_category .form_title {
+  background: gainsboro;
+  height: 40px;
+  padding-left: 15px;
+  padding-right: 15px;
+  line-height: 40px;
+  font-size: 16px;
+  color: gray;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.form_label {
+  height: 40px;
+  display: block;
+  line-height: 40px;
+  padding-left: 50px;
+  font-size: 14px;
+  position: relative;
+  cursor: pointer;
+}
+
+.checkbox-btn {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid gainsboro;
+  position: absolute;
+  top: 8px;
+  left: 15px;
+}
+
+.form_label input {
+  display: none;
+}
+
+.form_label input:checked + .checkbox-btn {
+  background: black;
+}
+
+.img-popup {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(5, 2, 54, 0.705);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.img-popup img {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+}
+
+.img-popup .close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 30px;
+  height: 30px;
+  background-image: url(./icons/x.svg);
+  background-size: 30px 30px;
+  cursor: pointer;
+}
+
+
+
+
