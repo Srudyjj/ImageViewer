@@ -1,3 +1,5 @@
+// const fetch = require('node-fetch');
+
 class Gallery {
 
   getImages(url) {
@@ -16,3 +18,4 @@ class Gallery {
   }
 }     
 
+// module.exports = new Gallery();

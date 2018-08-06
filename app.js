@@ -8,7 +8,10 @@ getImages('https://picsum.photos/list');
 function getImages(url) {
   gallery.getImages(url)
     .then(res => {
-      console.log(ui.paint(res))
+      console.log(res);
+      ui.render(res)
     })
     .catch(err => {alert(`Something went wrong: status code ${err}`)})
 }
+
+

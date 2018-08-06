@@ -169,7 +169,7 @@ header .container {
   width: 100%
 }
 
-.pagination_backward, .pagination_num, .pagination_forward {
+.pagination_backward, .pagination_forward {
   padding: 5px;
   cursor: pointer;
 }
