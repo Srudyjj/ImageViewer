@@ -1,14 +1,8 @@
 class UI {
 
-  constructor() {
-    this.container = document.querySelector(".catalog_images");
-    this.backward = document.querySelector(".pagination_backward");  
-    this.page = document.querySelector(".pagination_num");
-    this.forward = document.querySelector(".pagination_forward");
-  }
-
   _paint(data) {
     let renderImgs = "";
+    const container = document.querySelector(".catalog_images");
     data.forEach(img => {
       const element = `
       <div class="img_wrapper" >
@@ -18,25 +12,30 @@ class UI {
       `
       renderImgs += element;
     });
-    this.container.innerHTML = renderImgs;
+    
+    container.innerHTML = renderImgs;
   }
 
   _pagination(data) {
     let from = 0;
     let to = 20;
-    let page = 1;
+    let pageNum = 1;
+    const backward = document.querySelector(".pagination_backward");  
+    const pageHtml = document.querySelector(".pagination_num");
+    const forward = document.querySelector(".pagination_forward");
     const quantity = data.length;
     let renderData = data.slice(from, to);
+
+    pageHtml.textContent = pageNum;
     this._paint(renderData);
-    this.page.textContent = page;
 
     const previous = () => {
       if(from >= 20) {
         to -= 20;
         from -= 20;
-        page -= 1;
+        pageNum -= 1;
         renderData = data.slice(from, to);
-        this.page.textContent = page;
+        pageHtml.textContent = pageNum;
         this._paint(renderData);
       }     
     };
@@ -45,23 +44,19 @@ class UI {
       if(to < quantity) {
         to += 20;
         from += 20;
-        page += 1;
+        pageNum += 1;
         renderData = data.slice(from, to);
-        this.page.textContent = page; 
+        pageHtml.textContent = pageNum; 
         this._paint(renderData);
       }
     }
 
-    this.backward.addEventListener("click", () => {
+    backward.addEventListener("click", () => {
       previous();
     });
-    this.forward.addEventListener("click", () => {
+    forward.addEventListener("click", () => {
       next();
     });
-  }
-
-  _filter(data) {
-
   }
 
   render(data) {
