@@ -14,11 +14,12 @@ function getImages(url) {
       // filters.authorsFinder();
 
       const authors = ["Aaron Burden","Antoine Beauvillain", "Anton Sulsky", "Ariana Prestes", "Art Wave", "Artur Pokusin", "Arvee Marie", "Aurélien bellanger", "Austin Ban", "Austin Neill", "Austin Schmid", "Autumn Mott", "Axel  Antas-Bergkvist"]
-      filters.getWorksOfAuthors(authors)
+      filters.getWorksOfAuthors(authors);
+      filters.sizeFilter()
 
       ui.render(filters.renderData)
     })
-    .catch(err => {alert(`Something went wrong: status code ${err}`)})
+    // .catch(err => {alert(`Something went wrong: status code ${err}`)})
 }
 
 
