@@ -1,6 +1,6 @@
 // const fetch = require('node-fetch');
 
-class Gallery {
+export default class Gallery {
 
   getImages(url) {
     return new Promise((resolve, reject) => {

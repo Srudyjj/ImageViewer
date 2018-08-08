@@ -1,10 +1,12 @@
+import Gallery from "./gallery";
+import UI from "./ui";
+import Filters from "./filter";
+
 const gallery = new Gallery;
 const ui = new UI;
 
 
 getImages('https://picsum.photos/list');
-
-
 
 function getImages(url) {
   gallery.getImages(url)
@@ -19,7 +21,7 @@ function getImages(url) {
 
       ui.render(filters.renderData)
     })
-    // .catch(err => {alert(`Something went wrong: status code ${err}`)})
+    .catch(err => {alert(`Something went wrong: status code ${err}`)})
 }
 
 

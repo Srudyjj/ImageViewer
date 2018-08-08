@@ -1,4 +1,4 @@
-class Filters {
+export default class Filters {
   constructor(dataFromAPI) {
     this.data = dataFromAPI;   
     this.authors = [];    
