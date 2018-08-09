@@ -15,7 +15,6 @@ export default class UI {
       `
       renderImgs += element;
     });
-    
     container.innerHTML = renderImgs;
   }
 
@@ -26,9 +25,7 @@ export default class UI {
     let pageNum = 1;
     const backward = document.querySelector(".pagination_backward");  
     const pageHtml = document.querySelector(".pagination_num");
-    const forward = document.querySelector(".pagination_forward");
-    const quantity = data.length;
-    console.log(quantity);
+    const forward = document.querySelector(".pagination_forward");  
     
     let renderData = this.data.slice(from, to);
     pageHtml.textContent = pageNum;
@@ -40,11 +37,8 @@ export default class UI {
         to -= 20;
         from -= 20;
         pageNum -= 1;
-        console.log(data);
         renderData = data.slice(from, to);
         pageHtml.textContent = pageNum;
-        console.log(renderData);
-        console.log(this);
         this._paint(renderData);
       }     
     };
@@ -55,11 +49,8 @@ export default class UI {
         to += 20;
         from += 20;
         pageNum += 1;
-        console.log(data);
         renderData = data.slice(from, to);
         pageHtml.textContent = pageNum;
-        console.log(renderData);
-        console.log(this);
         this._paint(renderData);
       }
     }
