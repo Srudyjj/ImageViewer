@@ -107,6 +107,7 @@ header .container {
   padding-bottom: 50px;
   margin-bottom: -50px;
   height: 100%;
+  align-content: flex-start;
 }
 
 .catalog .img_wrapper {
@@ -201,6 +202,12 @@ header .container {
   color: gray;
   margin-top: 15px;
   margin-bottom: 15px;
+}
+
+.f-authors_container {
+  overflow: auto;
+  max-height: 500px;
+  margin-bottom: 35px;
 }
 
 .form_label {

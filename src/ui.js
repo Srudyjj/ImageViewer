@@ -6,7 +6,7 @@ export default class UI {
     data.forEach(img => {
       const element = `
       <div class="img_wrapper" >
-        <img src="https://picsum.photos/${img.filename}">
+        <img src="https://picsum.photos/${img.filename}" id=${img.id} >
         <span class="star"></span>
       </div>
       `
@@ -61,5 +61,26 @@ export default class UI {
 
   render(data) {
     this._pagination(data);
+  }
+
+  static renderAuthors(dataFromAPI) {
+    const container = document.querySelector('.f-authors_container');
+    const authors = () => {
+      let authorsSet = new Set();
+      dataFromAPI.forEach(img => {
+        authorsSet.add(img.author);
+      });
+      return Array.from(authorsSet).sort();
+    };
+    
+    authors().forEach((name, index) => {
+      let author =`
+        <label class="form_label" for="author${index}">${name}
+          <input type="checkbox" id="author${index}">
+          <span class="checkbox-btn"></span>
+        </label>
+      `
+      container.innerHTML += author;
+    })
   }
 }

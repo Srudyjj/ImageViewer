@@ -1,17 +1,7 @@
 export default class Filters {
-  constructor(dataFromAPI) {
-    this.data = dataFromAPI;   
-    this.authors = [];    
+  constructor(dataFromAPI) {  
+    this.data = dataFromAPI;
     this.renderData = this.data;
-    this.size = ["large","medium", "small"];
-  }
-
-  authorsFinder() {
-    let authorsSet = new Set();
-    this.data.forEach(img => {
-      authorsSet.add(img.author);
-    });
-    this.authors = Array.from(authorsSet).sort();
   }
 
   getWorksOfAuthors(authors) {
@@ -27,31 +17,26 @@ export default class Filters {
     }
   }
 
-  sizeFilter() {
-    if (this.size.length !== 0) {
-      console.log("This is size");
-      
+  sizeFilter(sizeList) {
+    if (sizeList.length !== 0) {
       const newRenderDate = this.renderData;
       this.renderData = [];   
-      this.size.forEach(size => {
+      sizeList.forEach(size => {
         if(size === "large") {
-          console.log("This is large");
           newRenderDate.forEach((img) => {
             if(img.width >= 1500) {
               this.renderData.push(img)
             }
           })
         } else if ((size === "medium")) {
-          console.log("This is medium");
           newRenderDate.forEach((img) => {
             if(img.width >= 800 && img.width < 1500) {
               this.renderData.push(img)
             }
           })
         } else if ((size === "small")) {
-          console.log("This is small");
           newRenderDate.forEach((img) => {
-            if(img.width >= 800 && img.width < 1500) {
+            if(img.width < 800) {
               this.renderData.push(img)
             }
           })
@@ -59,5 +44,6 @@ export default class Filters {
       })
     }
   }
+
 }
 
