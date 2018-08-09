@@ -1,4 +1,7 @@
 export default class UI {
+  constructor() {
+    this.data;
+  }
 
   _paint(data) {
     let renderImgs = "";
@@ -17,6 +20,7 @@ export default class UI {
   }
 
   _pagination(data) {
+    this.data = data;
     let from = 0;
     let to = 20;
     let pageNum = 1;
@@ -24,38 +28,47 @@ export default class UI {
     const pageHtml = document.querySelector(".pagination_num");
     const forward = document.querySelector(".pagination_forward");
     const quantity = data.length;
-    let renderData = data.slice(from, to);
-
+    console.log(quantity);
+    
+    let renderData = this.data.slice(from, to);
     pageHtml.textContent = pageNum;
+    
     this._paint(renderData);
 
-    const previous = () => {
+    const previous = (data) => {
       if(from >= 20) {
         to -= 20;
         from -= 20;
         pageNum -= 1;
+        console.log(data);
         renderData = data.slice(from, to);
         pageHtml.textContent = pageNum;
+        console.log(renderData);
+        console.log(this);
         this._paint(renderData);
       }     
     };
 
-    const next = () => {
+    const next = (data) => {
+      const quantity = data.length;      
       if(to < quantity) {
         to += 20;
         from += 20;
         pageNum += 1;
+        console.log(data);
         renderData = data.slice(from, to);
-        pageHtml.textContent = pageNum; 
+        pageHtml.textContent = pageNum;
+        console.log(renderData);
+        console.log(this);
         this._paint(renderData);
       }
     }
 
     backward.addEventListener("click", () => {
-      previous();
+      previous(this.data);
     });
     forward.addEventListener("click", () => {
-      next();
+      next(this.data);
     });
   }
 
