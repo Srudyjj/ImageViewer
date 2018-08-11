@@ -136,6 +136,18 @@ header .container {
   z-index: 1; 
 }
 
+@keyframes myfirst {
+  0%   {transform: rotate(0deg) scale(0.8);}
+  100% {transform:rotate(360deg) scale(1.3);}
+}
+
+.catalog .img_wrapper .star.added {
+  opacity: 1;
+  animation: myfirst 3s ease-in-out 0s infinite alternate;
+}
+
+
+
 .catalog .img_wrapper .star:hover {
   opacity: 1; 
 }
@@ -202,6 +214,12 @@ header .container {
   color: gray;
   margin-top: 15px;
   margin-bottom: 15px;
+}
+
+.f-authors_container {
+  overflow: auto;
+  max-height: 500px;
+  margin-bottom: 35px;
 }
 
 .form_label {

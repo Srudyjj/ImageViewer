@@ -1,7 +1,19 @@
 export default class Favorites {
 
-  get() {
-
+  getImages() {
+    return new Promise((resolve, reject) => {
+      
+      if(localStorage.length === 0) {
+        return reject("Northing Added!!!");
+      } else {
+        let data = [];
+        for (let i = 0; i < localStorage.length; i++) {
+          const element = localStorage.getItem(localStorage.key(i));
+          data.push(JSON.parse(element));
+        }
+        return resolve(data);
+      }
+    })
   }
 
   _add(id, data) {
@@ -10,7 +22,6 @@ export default class Favorites {
         localStorage.setItem(el.id, JSON.stringify(el));
        }
     });
-    
   }
 
   _remove(id, data) {

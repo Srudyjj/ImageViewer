@@ -6,7 +6,21 @@ import Favorites from "./favorites";
 const gallery = new Gallery;
 const ui = new UI;
 const favorites = new Favorites;
-
+ 
+// function getImagesFromStorage() {
+//   favorites.getImages()
+//   .then(res => {
+//     let sizeList = [];
+//     let authors = []
+//     UI.renderAuthors(res);
+//     start(res, sizeList, authors);
+//     getAuthorsList(res, sizeList, authors);
+//     getSizeList(res, sizeList, authors);
+//     favorites.handler(res);
+//   })
+//   .catch(err => {alert(err)})
+// }
+// getImagesFromStorage()
 
 getImagesFromAPI('https://picsum.photos/list');
 
@@ -17,13 +31,11 @@ function getImagesFromAPI(url) {
       let authors = []
       UI.renderAuthors(res);
       start(res, sizeList, authors);
-      getAuthors(res, sizeList, authors);
-      getSize(res, sizeList, authors);
-
-
+      getAuthorsList(res, sizeList, authors);
+      getSizeList(res, sizeList, authors);
       favorites.handler(res);
     })
-    // .catch(err => {alert(`Something went wrong: status code ${err}`)})
+    .catch(err => {alert(`Something went wrong: status code ${err}`)})
 }
 
 
@@ -34,7 +46,7 @@ function start(res, sizeList, authors) {
   ui.render(filters.renderData);
 }
 
-function getAuthors(res, sizeList, authors) {
+function getAuthorsList(res, sizeList, authors) {
   const form = document.getElementById("f-author");
   form.addEventListener('change', (e) => {
     const input = e.target;   
@@ -51,7 +63,7 @@ function getAuthors(res, sizeList, authors) {
   })
 };
 
-function getSize(res, size, authors) {
+function getSizeList(res, size, authors) {
   const form = document.getElementById("f-size");
   form.addEventListener('change', (e) => {
     const input = e.target;
