@@ -1,33 +1,37 @@
 import Gallery from "./gallery";
 import UI from "./ui";
 import Filters from "./filter";
+import Favorites from "./favorites";
 
 const gallery = new Gallery;
 const ui = new UI;
+const favorites = new Favorites;
 
 
-getImages('https://picsum.photos/list');
+getImagesFromAPI('https://picsum.photos/list');
 
-function getImages(url) {
+function getImagesFromAPI(url) {
   gallery.getImages(url)
     .then(res => {
       let sizeList = [];
       let authors = []
       UI.renderAuthors(res);
-      init(res, sizeList, authors);
+      start(res, sizeList, authors);
       getAuthors(res, sizeList, authors);
-      getSize(res, sizeList, authors)
+      getSize(res, sizeList, authors);
+
+
+      favorites.handler(res);
     })
     // .catch(err => {alert(`Something went wrong: status code ${err}`)})
 }
 
 
-function init(res, sizeList, authors) {
+function start(res, sizeList, authors) {
   const filters = new Filters(res);
   filters.getWorksOfAuthors(authors);
   filters.sizeFilter(sizeList);
   ui.render(filters.renderData);
-  console.log(filters.renderData);
 }
 
 function getAuthors(res, sizeList, authors) {
@@ -43,7 +47,7 @@ function getAuthors(res, sizeList, authors) {
         authors.splice(i, 1);
       }
     }
-    init(res, sizeList, authors);
+    start(res, sizeList, authors);
   })
 };
 
@@ -59,6 +63,7 @@ function getSize(res, size, authors) {
         size.splice(i, 1);
       }
     }
-    init(res, size, authors);
+    start(res, size, authors);
   })
-}
+};
+

@@ -8,7 +8,7 @@ export default class UI {
     const container = document.querySelector(".catalog_images");
     data.forEach(img => {
       const element = `
-      <div class="img_wrapper" >
+      <div class="img_wrapper">
         <img src="https://picsum.photos/${img.filename}" id=${img.id} >
         <span class="star"></span>
       </div>
@@ -16,6 +16,19 @@ export default class UI {
       renderImgs += element;
     });
     container.innerHTML = renderImgs;
+    this._setFavorites();
+  }
+
+  _setFavorites() {
+    const len = localStorage.length;
+    for (let i = 0; i < len; i++) {
+      const id = localStorage.key(i);
+      const img = document.getElementById(id);
+      if (img) {
+        const btn = img.parentElement.querySelector('.star');
+        btn.className = 'star added';
+      }     
+    }
   }
 
   _pagination(data) {
