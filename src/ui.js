@@ -80,11 +80,11 @@ export default class UI {
     this._pagination(data);
   }
 
-  static renderAuthors(dataFromAPI) {
+  renderAuthors(data) {
     const container = document.querySelector('.f-authors_container');
     const authors = () => {
       let authorsSet = new Set();
-      dataFromAPI.forEach(img => {
+      data.forEach(img => {
         authorsSet.add(img.author);
       });
       return Array.from(authorsSet).sort();

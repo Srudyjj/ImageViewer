@@ -3,7 +3,7 @@ import UI from "./ui";
 import Filters from "./filter";
 import Favorites from "./favorites";
 
-class HomePage{
+class HomePage{  
 
   constructor(url) {
     this.url = url;
@@ -13,6 +13,7 @@ class HomePage{
   }
   
   fetchImages() {
+    console.log("Home");
     this.gallery.getImages(this.url)
     .then(res => {
       this._init(res);      
@@ -23,7 +24,7 @@ class HomePage{
   _init(res) {
     let sizeList = [];
     let authors = []
-    UI.renderAuthors(res);
+    this.ui.renderAuthors(res);
     this._getFilterData(res, sizeList, authors);
     this._getAuthorsList(res, sizeList, authors);
     this._getSizeList(res, sizeList, authors);
@@ -78,6 +79,7 @@ class FavoritesPage extends HomePage{
   }
 
   fetchImages() {
+    console.log("Favorites");
     this.favorites.getImages()
     .then(res => {
       this._init(res);      
@@ -100,6 +102,10 @@ class PageState{
     this.change(new HomePage('https://picsum.photos/list'));
   }
 }
+
+const favorit = new FavoritesPage;
+console.log(favorit);
+
 
 const pageState = new PageState;
 pageState.init();
