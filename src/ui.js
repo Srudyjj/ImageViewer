@@ -6,16 +6,26 @@ export default class UI {
   _paint(data) {
     let renderImgs = "";
     const container = document.querySelector(".catalog_images");
+    container.innerHTML = "";
+    const fragment = document.createDocumentFragment();
     data.forEach(img => {
-      const element = `
-      <div class="img_wrapper">
-        <img src="https://picsum.photos/${img.filename}" id=${img.id} >
-        <span class="star"></span>
-      </div>
-      `
-      renderImgs += element;
+      const image = document.createElement('img');
+      image.src = `https://picsum.photos/${img.filename}`;
+      image.id = img.id;
+
+      const imgWrapper = document.createElement('div');
+      imgWrapper.className = "img_wrapper";
+
+      const star = document.createElement('span');
+      star.className = "star";
+
+      imgWrapper.appendChild(image);
+      imgWrapper.appendChild(star);
+      fragment.appendChild(imgWrapper);
     });
-    container.innerHTML = renderImgs;
+
+    container.appendChild(fragment);
+
     this._setFavorites();
   }
 
