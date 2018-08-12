@@ -103,10 +103,6 @@ class PageState{
   }
 }
 
-const favorit = new FavoritesPage;
-console.log(favorit);
-
-
 const pageState = new PageState;
 pageState.init();
 

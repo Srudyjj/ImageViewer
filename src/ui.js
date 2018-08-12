@@ -82,6 +82,7 @@ export default class UI {
 
   renderAuthors(data) {
     const container = document.querySelector('.f-authors_container');
+    container.innerHTML = '';
     const authors = () => {
       let authorsSet = new Set();
       data.forEach(img => {
