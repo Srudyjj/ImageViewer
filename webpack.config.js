@@ -29,7 +29,10 @@ module.exports = {
         use: [{
           loader: 'html-loader',
           options: {
-            minimize: true
+            minimize: true,
+            minifyCSS: true,
+            minifyJS: true,
+            removeComments: true,
           }
         },
         {
@@ -52,6 +55,10 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-inline-loader'
       }
     ]
   }

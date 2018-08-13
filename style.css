@@ -353,6 +353,10 @@ button.menu-btn {
   transform: scale(1.2);
 }
 
+.deactive-scroll {
+  overflow: hidden;
+}
+
 @media screen and (max-width: 1175px) {
 
   .container {
@@ -391,10 +395,6 @@ button.menu-btn {
 
   button.menu-btn {
     display: block;
-  }
-
-  .deactive-scroll {
-    overflow: hidden!important;
   }
 }
 
