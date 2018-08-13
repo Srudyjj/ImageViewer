@@ -1,3 +1,4 @@
+import preloader from "./preloader";
 import Gallery from "./gallery";
 import UI from "./ui";
 import Filters from "./filter";
@@ -13,10 +14,10 @@ class HomePage{
   }
   
   fetchImages() {
-    console.log("Home");
     this.gallery.getImages(this.url)
     .then(res => {
-      this._init(res);      
+      this._init(res);
+      preloader.hide();      
     })
     .catch(err => {alert(`Something went wrong: status code ${err}`)})
   }
@@ -79,10 +80,10 @@ class FavoritesPage extends HomePage{
   }
 
   fetchImages() {
-    console.log("Favorites");
     this.favorites.getImages()
     .then(res => {
-      this._init(res);      
+      this._init(res);
+      preloader.hide();    
     })
     .catch(err => {alert(`Something went wrong: ${err}, check your localstorage`)})
   }
@@ -94,6 +95,7 @@ class PageState{
   }
 
   change(state) {
+    preloader.show();
     this.curentState = state;
     this.curentState.fetchImages();
   }
@@ -103,17 +105,20 @@ class PageState{
   }
 }
 
-const pageState = new PageState;
-pageState.init();
+window.addEventListener('load', () => {
+  
+  const pageState = new PageState;
+  pageState.init();
 
-document.getElementById('home').addEventListener('click', (e) => {
-  pageState.change(new HomePage('https://picsum.photos/list'));
-  e.preventDefault();
-});
-
-document.getElementById('favorites').addEventListener('click', (e) => {
-  pageState.change(new FavoritesPage);
-  e.preventDefault();
-});
+  document.getElementById('home').addEventListener('click', (e) => {
+    pageState.change(new HomePage('https://picsum.photos/list'));
+    e.preventDefault();
+  });
+  
+  document.getElementById('favorites').addEventListener('click', (e) => {
+    pageState.change(new FavoritesPage);
+    e.preventDefault();
+  });
+})
 
 
