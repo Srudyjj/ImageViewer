@@ -250,7 +250,7 @@ button.menu-btn {
   min-width: 330px;
   padding: 30px;
   padding-top: 0;
-  transition: all 1s ease-in-out;
+  transition: all 0.8s ease-in-out;
   transform: translateX(0);
   background: white;
 }
@@ -352,14 +352,17 @@ button.menu-btn {
 
   .filter {
     transform: translateX(100%);
-    position: absolute;
     right: 0;
     z-index: 10;
+    position: fixed;
   }
 
   .filter_active {
     transform: translateX(0);
     box-shadow: -12px 12px 40px 0px rgba(166,166,166,0.62);
+    overflow: auto;
+    top: 50px;
+    bottom: 0;
   }
 
   .f-authors_container {
@@ -370,6 +373,7 @@ button.menu-btn {
   .catalog_deactive {
     opacity: 0.5;
     transform: translateX(-15%);
+    pointer-events: none; 
   }
 
   .catalog .catalog_images {
@@ -378,6 +382,10 @@ button.menu-btn {
 
   button.menu-btn {
     display: block;
+  }
+
+  .deactive-scroll {
+    overflow: hidden!important;
   }
 }
 
@@ -408,6 +416,10 @@ button.menu-btn {
   .catalog .img_wrapper img {
     width: 100vw;
     height: 100vw;
+  }
+
+  .btn-group button {
+    margin-right: 15px;
   }
 }
 

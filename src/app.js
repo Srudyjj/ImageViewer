@@ -1,4 +1,4 @@
-import preloader from "./preloader";
+import { preloader ,sideMenu } from "./staff";
 import Gallery from "./gallery";
 import UI from "./ui";
 import Filters from "./filter";
@@ -19,7 +19,10 @@ class HomePage{
       this._init(res);
       preloader.hide();      
     })
-    .catch(err => {alert(`Something went wrong: status code ${err}`)})
+    .catch(err => {
+      alert(`Something went wrong: status code ${err}`);
+      preloader.hide();
+    })
   }
 
   _init(res) {
@@ -85,7 +88,10 @@ class FavoritesPage extends HomePage{
       this._init(res);
       preloader.hide();    
     })
-    .catch(err => {alert(`Something went wrong: ${err}, check your localstorage`)})
+    .catch(err => {
+      alert(`Something went wrong: ${err}, check your localstorage`);
+      preloader.hide();  
+    })
   }
 }
 
@@ -119,6 +125,10 @@ window.addEventListener('load', () => {
     pageState.change(new FavoritesPage);
     e.preventDefault();
   });
+
+  sideMenu.toggle();
+  console.log(sideMenu.button);
+  console.log(sideMenu.menu);
 })
 
 
