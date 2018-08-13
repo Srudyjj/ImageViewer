@@ -1,4 +1,4 @@
-import { preloader ,sideMenu } from "./staff";
+import { preloader, sideMenu, imagePopup } from "./staff";
 import Gallery from "./gallery";
 import UI from "./ui";
 import Filters from "./filter";
@@ -127,8 +127,8 @@ window.addEventListener('load', () => {
   });
 
   sideMenu.toggle();
-  console.log(sideMenu.button);
-  console.log(sideMenu.menu);
+  imagePopup.hendler();
+
 })
 
 

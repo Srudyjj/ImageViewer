@@ -21,4 +21,28 @@ export const sideMenu = {
       this.button.classList.toggle('menu-btn_active');
     }
   }
+};
+
+export const imagePopup = {
+  container: document.querySelector('.catalog_images'),
+  popup: document.querySelector('.img-popup'),
+  closebtn: document.querySelector('.close'),
+  bodyHtml : document.querySelector('body, html'),
+  hendler: function () {
+    this.container.onclick = (e) => {
+      
+      if (e.target.tagName === "IMG") {
+        const src = e.target.src;
+        const img = this.popup.querySelector('img');
+        img.src = src;
+        this.popup.classList.add("img-popup_active");
+        this.bodyHtml.classList.toggle('deactive-scroll');
+      }
+
+      this.closebtn.onclick = (e) => {
+        this.popup.classList.remove("img-popup_active");
+        this.bodyHtml.classList.toggle('deactive-scroll');
+      }
+    }
+  }
 }
