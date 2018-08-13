@@ -12,7 +12,12 @@
   <header>
     <div class="container">
       <a href="#" id="home" class="logo" >Image View</a>
-      <a href="#" id="favorites" class="fovorites" ></a>
+      <div class="btn-group" >
+        <button id="favorites" class="fovorites" ></button>
+        <button id="menu-btn" class="menu-btn">
+          <span></span>
+        </button>
+      </div>
     </div>
   </header>
   <div class="container">
@@ -55,6 +60,10 @@
   <div class="img-popup">
     <img src="https://picsum.photos/200/200/?random" alt="">
     <span class="close" ></span>
+  </div>
+
+  <div id="preloader" class="preloader">
+    <div class="lds-ripple"><div></div><div></div></div>
   </div>
 </body>
 </html>
